@@ -5,7 +5,7 @@ export default function App() {
   const [scores, setScores] = useState({ player1: 0, player2: 0 });
 
   useEffect(() => {
-    fetch("http://localhost:5000/scores")
+    fetch("https://api-gagne.leurquin.org/scores")
       .then((res) => res.json())
       .then((data) => setScores(data));
   }, []);
@@ -14,7 +14,7 @@ export default function App() {
     const newScores = { ...scores, [player]: scores[player] + change };
     setScores(newScores);
     
-    fetch("http://localhost:5000/scores", {
+    fetch("https://api-gagne.leurquin.org/scores", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newScores),
